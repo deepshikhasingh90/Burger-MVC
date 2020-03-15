@@ -1,20 +1,22 @@
-var connection = require("./connection.js");
+const connection = require("../config/connection.js");
 
-// The above helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string.
-// ["?", "?", "?"].toString() => "?,?,?";
+// Helper function for SQL syntax to insert question marks
 function printQuestionMarks(num) {
-    var arr = [];
+    let arr = [];
 
-    for (var i = 0; i < num; i++) {
+    for (let i = 0; i < num; i++) {
         arr.push("?");
     }
+
     return arr.toString();
 }
-function objToSql(ob) {
-    var arr = [];
-    for (var key in ob) {
-        var value = ob[key];
 
+// Helper function to convert object key/value pairs to SQL syntax
+function objToSql(ob) {
+    let arr = [];
+
+    for (let key in ob) {
+        let value = ob[key];
         if (Object.hasOwnProperty.call(ob, key)) {
             if (typeof value === "string" && value.indexOf(" ") >= 0) {
                 value = "'" + value + "'";
@@ -22,6 +24,7 @@ function objToSql(ob) {
             arr.push(key + "=" + value);
         }
     }
+
     return arr.toString();
 }
 
@@ -38,7 +41,6 @@ let orm = {
     },
 
     insertOne: function (table, cols, vals, cb) {
-
         let queryString = "INSERT INTO " + table;
 
         queryString += " (";
@@ -54,6 +56,7 @@ let orm = {
             if (err) {
                 throw err;
             }
+
             cb(result);
         });
     },
@@ -76,4 +79,3 @@ let orm = {
 };
 
 module.exports = orm;
-
