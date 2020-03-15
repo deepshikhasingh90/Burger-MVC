@@ -1,0 +1,47 @@
+body {
+    background-image: url("/assets/img/burger23.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity :0.9;
+}
+@import url('https://fonts.googleapis.com/css?family=Pangolin&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Cedarville+Cursive|Righteous&display=swap');
+
+.jumbotron{
+    font-family: 'Righteous', cursive;
+    font-size:40px;
+}
+#newburger {
+    border-radius: 5px;
+}
+
+#color-override {
+    color: #fff;
+}
+
+#lefthead {
+    background-color: #556B2F;
+    color: white;
+    text-align: center;
+    font-size: 2em;
+}
+
+#eatbutton, #trashbutton {
+    float: right;
+}
+
+#righthead {
+    background-color: #CD853F;
+    color: white;
+    text-align: center;
+    font-size: 2em;
+}
+ul{
+    background: whitesmoke;
+}
+
+button{
+    display: inline-block;
+    font-size: 12px;
+}

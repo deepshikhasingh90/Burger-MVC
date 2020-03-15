@@ -1,40 +1,40 @@
 $(function () {
-    $(".change-status").on("click", function (event) {
-        event.preventDefault();
-        let id = $(this).data("id");
-        let newConsume = $(this).data("newconsume");
 
-        let newConsumeState = {
-            devoured: newConsume
-        };
-
-        $.ajax("/api/burgers/" + id, {
-            type: "PUT",
-            data: newConsumeState
-        }).then(
-            function () {
-                console.log("changed status to", newConsume);
-                location.reload();
-            }
-        );
-    });
-
+    // Add a new burger.
     $(".create-form").on("submit", function (event) {
         event.preventDefault();
 
-        let newBurger = {
-            burger_name: $("#bur").val().trim(),
+        var newBurger = {
+            burger_name: $("#newburger").val().trim(),
             devoured: 0
         };
 
+        // Send the POST request.
         $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger
-        }).then(
-            function () {
-                console.log("created new burger");
-                location.reload();
-            }
-        );
+        }).then(function () {
+            console.log("Added new burger");
+            // Reload the page to get the updated burger list.
+            location.reload();
+        });
     });
-});
+
+    $(".eatburger").on("click", function (event) {
+        event.preventDefault();
+
+        var id = $(this).data("id");
+        var devouredState = {
+            devoured: 1
+        };
+
+        // Send the PUT request.
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT",
+            data: devouredState
+        }).then(function () {
+            console.log("Burger devoured");
+            location.reload();
+        });
+    });
+})
