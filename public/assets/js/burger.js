@@ -2,18 +2,18 @@ $(function () {
     $(".change-status").on("click", function (event) {
         event.preventDefault();
         let id = $(this).data("id");
-        let newOrder = $(this).data("newOrder");
+        let newConsume = $(this).data("newconsume");
 
-        let newOrderState = {
-            devoured: newOrder
+        let newConsumeState = {
+            devoured: newConsume
         };
-    // Send the PUT request.
+
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
-            data: newOrderState
+            data: newConsumeState
         }).then(
             function () {
-                console.log("changed status to", newOrder);
+                console.log("changed status to", newConsume);
                 location.reload();
             }
         );
@@ -23,7 +23,7 @@ $(function () {
         event.preventDefault();
 
         let newBurger = {
-            burger_name: $("#burgerName").val().trim(),
+            burger_name: $("#bur").val().trim(),
             devoured: 0
         };
 
