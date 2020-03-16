@@ -1,8 +1,8 @@
 body {
-    background-image: url("/assets/img/burger23.jpg");
+    background-image: url("/assets/img/pngtree-burger.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    opacity :0.9;
+    /* opacity :0.9; */
 }
 @import url('https://fonts.googleapis.com/css?family=Pangolin&display=swap');
 
@@ -17,7 +17,7 @@ body {
 }
 
 #color-override {
-    color: #fff;
+    color:white;
 }
 
 #lefthead {
